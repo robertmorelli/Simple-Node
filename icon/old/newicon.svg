@@ -1,0 +1,10 @@
+<svg  class="button-svg" data-export="palette" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100" height="100" xml:space="preserve">
+
+<rect x="0" width="100" height="100" rx="15" fill="#221122"/>
+
+<ellipse transform="rotate(-45 ,50,50)"  cx="50" cy="50" rx="25" ry="40"  fill="#505877"/>
+
+<path fill="#eebbee" d="M50,7 Q-4,-4 7,50  Q0,0 50,7  " />
+
+
+</svg>

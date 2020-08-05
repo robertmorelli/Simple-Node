@@ -1,0 +1,26 @@
+<svg  class="button-svg" data-export="palette" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000" height="1000" xml:space="preserve">
+<path style="fill:black;stroke:black" d="M0,0L100,100M100,0L0,100"></path>
+<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+
+<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" 
+stroke-dasharray="calc(50*31.42/100) 31.42"/>
+
+
+<circle cx="50" cy="50" r="20" stroke="blue" stroke-width="40" fill="white" 
+stroke-dasharray="2 251.327412287 ">
+<animate attributeName="stroke-dasharray" 
+values="0 251.327412287;126.327412287 251.327412287;126.327412287 251.327412287;126.327412287 251.327412287;0 251.327412287" 
+dur="5s" repeatCount="indefinite" />
+</circle>
+<circle cx="50" cy="50" r="20" stroke="red" stroke-width="40" fill="white" 
+stroke-dasharray="2 251.327412287 ">
+<animate attributeName="stroke-dasharray" 
+values="0 251.327412287;0 251.327412287;126.327412287 251.327412287;0 251.327412287;0 251.327412287" 
+dur="5s" repeatCount="indefinite" />
+</circle>
+
+
+<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="none" />
+<circle cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="white" />
+
+</svg>

@@ -1,0 +1,44 @@
+{
+    "animation":["./pages/animation.svg","text/html"],
+    "favicon":["./icon/favicon.webp","image/webp"],
+    "mystyle":["./css/mystyles.css","text/css"],
+    "home":["./pages/home/home.html","text/html"],
+    "homejs":["./pages/home/home.js","text/javascript"],
+    "homecss":["./pages/home/home.css","text/javascript"],
+    "icon:moveback":["./mycons/moveback.svg","image/svg"],
+
+
+
+    "test":["./pages/test/test.html","text/html"],
+    "testjs":["./pages/test/test.js","text/javascript"],
+    "testcss":["./pages/test/test.css","text/css"],
+
+    "edges":["./pages/edges/edges.html","text/html"],
+    "edgesjs":["./pages/edges/edges.js","text/javascript"],
+    "edgescss":["./pages/edges/edges.css","text/css"],
+
+    "multithread":["./multithread/multithread.js","text/javascript"],
+    "parallel":["./multithread/parallel.js","text/javascript"],
+
+
+    "icon:ionic":["./mycons/ionictester.svg","image/svg"],
+    "icon:restart":["./mycons/restart.svg","image/svg"],
+
+    "ionicon:close-circle":["./ionicons/close-circle.svg","image/svg"],
+    "ionicon:brush":["./ionicons/brush.svg","image/svg"],
+    "ionicon:bonfire":["./ionicons/bonfire.svg","image/svg"],
+    "ionicon:caret-back":["./ionicons/caret-back.svg","image/svg"],
+    "ionicon:caret-forward":["./ionicons/caret-forward.svg","image/svg"],
+    "ionicon:log-in":["./ionicons/log-in.svg","image/svg"],
+    "ionicon:cog":["./ionicons/cog.svg","image/svg"],
+    "ionicon:color-wand":["./ionicons/color-wand.svg","image/svg"],
+    "ionicon:egg":["./ionicons/egg.svg","image/svg"],
+    "ionicon:bug":["./ionicons/bug.svg","image/svg"],
+    "ionicon:pulse":["./ionicons/pulse.svg","image/svg"],
+    "ionicon:pause-circle":["./ionicons/pause-circle.svg","image/svg"],
+    "ionicon:play-circle":["./ionicons/play-circle.svg","image/svg"],
+    "ionicon:location":["./ionicons/location.svg","image/svg"],
+    "ionicon:sync-circle":["./ionicons/sync-circle.svg","image/svg"],
+    "ionicon:arrow-undo":["./ionicons/arrow-undo.svg","image/svg"],
+    "ionicon:save":["./ionicons/save.svg","image/svg"]
+  }
