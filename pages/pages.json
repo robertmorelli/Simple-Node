@@ -2,16 +2,22 @@
     "animation":["./pages/animation.svg","text/html"],
     "favicon":["./icon/favicon.webp","image/webp"],
     "mystyle":["./css/mystyles.css","text/css"],
-    "home":["./pages/home/home.html","text/html"],
-    "homejs":["./pages/home/home.js","text/javascript"],
-    "homecss":["./pages/home/home.css","text/javascript"],
+    "editor":["./pages/editor/editor.html","text/html"],
+    "editorjs":["./pages/editor/editor.js","text/javascript"],
+    "editorcss":["./pages/editor/editor.css","text/javascript"],
     "icon:moveback":["./mycons/moveback.svg","image/svg"],
 
 
 
-    "test":["./pages/test/test.html","text/html"],
-    "testjs":["./pages/test/test.js","text/javascript"],
-    "testcss":["./pages/test/test.css","text/css"],
+    "giraffe":["./pages/giraffe/giraffe.html","text/html"],
+    "giraffejs":["./pages/giraffe/giraffe.js","text/javascript"],
+    "giraffecss":["./pages/giraffe/giraffe.css","text/css"],
+    
+
+    "mosaic":["./pages/edges/edges.html","text/html"],
+    "mosaicjs":["./pages/edges/edges.js","text/javascript"],
+    "mosaiccss":["./pages/edges/edges.css","text/css"],
+
 
     "edges":["./pages/edges/edges.html","text/html"],
     "edgesjs":["./pages/edges/edges.js","text/javascript"],

@@ -1,2 +1,4 @@
 
 *.svg
+multithread/multithread.js
+multithread/parallel.js
