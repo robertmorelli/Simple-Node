@@ -8,14 +8,7 @@ function imgDataFunctionMaker(lis){
 function printImage(evt) {
 
 
-    var p = new Parallel([0, 1, 2, 3, 4, 5, 6],{maxWorkers:2})
-    var outside=[25,3,4,5,6,7,8,9,10,11];
     
-    log2 = log2maker(outside)
-    outside[0]=10
-    log2(0)
-    p.map(log2)
-    log2maker(outside)(0)
 
     var tgt = evt.target || window.event.srcElement,
         files = tgt.files;

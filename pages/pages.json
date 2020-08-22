@@ -14,9 +14,9 @@
     "giraffecss":["./pages/giraffe/giraffe.css","text/css"],
     
 
-    "mosaic":["./pages/edges/edges.html","text/html"],
-    "mosaicjs":["./pages/edges/edges.js","text/javascript"],
-    "mosaiccss":["./pages/edges/edges.css","text/css"],
+    "mosaic":["./pages/mosaic/mosaic.html","text/html"],
+    "mosaicjs":["./pages/mosaic/mosaic.js","text/javascript"],
+    "mosaiccss":["./pages/mosaic/mosaic.css","text/css"],
 
 
     "edges":["./pages/edges/edges.html","text/html"],
