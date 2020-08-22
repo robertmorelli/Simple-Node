@@ -8,14 +8,14 @@ function imgDataFunctionMaker(lis){
 function printImage(evt) {
 
 
-    var p = new Parallel([0, 1, 2, 3, 4, 5, 6],{maxWorkers:2})
-    var outside=[25,3,4,5,6,7,8,9,10,11];
+    //var p = new Parallel([0, 1, 2, 3, 4, 5, 6],{maxWorkers:2})
+    //var outside=[25,3,4,5,6,7,8,9,10,11];
     
-    log2 = log2maker(outside)
-    outside[0]=10
-    log2(0)
-    p.map(log2)
-    log2maker(outside)(0)
+    //log2 = log2maker(outside)
+    //outside[0]=10
+    //log2(0)
+    //p.map(log2)
+    //log2maker(outside)(0)
 
     var tgt = evt.target || window.event.srcElement,
         files = tgt.files;
@@ -55,26 +55,57 @@ function printImage(evt) {
             }*/
             var rheight=img.height
             var rWidth=img.width
-            canvas.width = rWidth*2
-            canvas.height = rheight*3
+            canvas.width = rWidth*16*0+600
+            canvas.height = rheight*16*0+600
             var ctx = canvas.getContext("2d");
         //Get Context
             
-            ctx.drawImage(
+            /*ctx.drawImage(
                 img,
                 0,
                 0,
                 rWidth,
                 rheight
-            );
-            
-            var imgData = ctx.getImageData(0, 0, rWidth, rheight)
-            //console.log(imgData)
-            
+            );*/
 
             
+            //var imgData = ctx.getImageData(0, 0, rWidth, rheight)
+            var img2 = new Image(); 
+            img2.src="data:image/svg+xml,%3Csvg id='svg' version='1.1' baseProfile='full' width='1000' height='1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(-150 -200)'%3E%3Cg stroke='none'%3E%3Cpath fill='DarkSlateGrey' d='M 150 200 L 750 200 L 750 800 L 150 800 Z' /%3E%3Cpath fill='bisque' d='M 600 300 L 600 500 C 600 600 500 700 400 700 C 300 700 200 600 200 500 L 200 300 L 550 300 C 600 300 600 350 600 300'/%3E%3Cpath fill='BurlyWood' d='M 200 300 L 550 300 C 500 350 500 500 400 500 C 300 500 350 400 400 450 C 450 500 300 300 200 400'/%3E%3Cpath fill='brown' d='M 550 300 C 500 350 500 500 400 500 C 300 500 350 400 400 450 C 450 500 450 300 300 300'/%3E%3C/g%3E%3Cg stroke-linecap='round' fill='transparent' stroke='%23151A03' stroke-width='25'%3E%3Cpath d='M 620 600 C 630 550, 700 500, 700 400 C 700 300 650 300 600 300'/%3E%3Cpath d='M 600 300 L 600 500 C 600 600 500 700 400 700 C 300 700 200 600 200 500 L 200 300'/%3E%3Cpath d='M 600 300 L 600 500 C 600 600 500 700 400 700 C 300 700 200 600 200 500 L 200 300'/%3E%3Cpath d='M 200 300 L 550 300'/%3E%3Cpath d='M 550 300 C 500 350 500 500 400 500 C 300 500 350 400 400 450'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"
+            
+            img2.onload = function(){
+                
+                console.log(typeof(img2))
+                ctx.drawImage(img2,0,0)
+                
+                
+                document.body.appendChild(canvas);
+            }
             
             
+            
+            
+            //ctx.scale(8,8)
+            //ctx.putImageData(imgData,0,0)
+            
+            
+            
+            /*console.log(repeatbyx([1,1,1,2,2,2,3,3,3,1,2,3,3,2,1],3,2))
+            var wide=repeatbyx(imgData.data,4,8)
+            var widandtall=repeatbyx(wide,imgData.width*32,8)
+            var newData = Uint8ClampedArray.from(widandtall)
+            var newimage= new ImageData(newData,imgData.width*8,imgData.height*8)
+            ctx.putImageData(newimage,0,0)
+            var sobelitup=getSobel(newimage)
+            var added=addIMages(sobelitup,newimage)
+            var subbed=compareIMages(sobelitup,newimage)
+            ctx.putImageData(sobelitup,imgData.width*8,imgData.height*8)
+            ctx.putImageData(added,0,imgData.height*8)
+            ctx.putImageData(subbed,imgData.width*8,0)
+            */
+
+
+
             //ctx.putImageData(dataTransform(imgData,getRed),0,img.height)
             //ctx.putImageData(dataTransform(imgData,getGreen),0,img.height*2)
             //ctx.putImageData(dataTransform(imgData,getBlue),0,img.height*3)
@@ -86,29 +117,31 @@ function printImage(evt) {
             
             //var img10=getPeak(getDif(imgData))
             
-            var img5=getSobel(imgData)
-            var img23=getSobelX(imgData)
-            var img24=compareIMages(img5,img23)
+            //var img5=getSobel(imgData)
+            //var img23=getSobelX(imgData)
+            //var img24=compareIMages(img5,img23)
             
             //console.log(getSums(imgData))
             //console.log(getSums(img4))
-            Array(30,90,150,210,270,330).map(A=>console.log(`[${redByAngle(A)},${GreenByAngle(A)},${BlueByAngle(A)}] `))
+            //Array(30,90,150,210,270,330).map(A=>console.log(`[${redByAngle(A)},${GreenByAngle(A)},${BlueByAngle(A)}] `))
             
+            //var bigger=timesastall8ac(imgData)
+            //ctx.putImageData(bigger,0,0)
 
 
-
-            ctx.putImageData(img5,rWidth*1,0)
-            ctx.putImageData(img23,rWidth*1,rheight)
-            ctx.putImageData(img24,rWidth*1,rheight*2)
+            //ctx.putImageData(img5,rWidth*1,0)
+            //ctx.putImageData(img23,rWidth*1,rheight)
+            //ctx.putImageData(img24,rWidth*1,rheight*2)
+            
             //ctx.putImageData(getSobel(img5),0,rheight)
             //ctx.putImageData(img6,0,rheight*2)
             
             
             //ctx.putImageData(img7,rWidth,rheight)
-            var coords=getRandomCoords(img5,200)
+            //var coords=getRandomCoords(img5,200)
 
-            coords[1].map(e=>coords[0].push(e))
-            coords[2].map(e=>coords[0].push(e))
+            //coords[1].map(e=>coords[0].push(e))
+            //coords[2].map(e=>coords[0].push(e))
             //var celled=makeCellsRGBCorrect(imgData,coords)
             //ctx.putImageData(celled,0,rheight)
             //var cellines=getDifBW(celled)
@@ -183,7 +216,7 @@ function printImage(evt) {
             //ctx.putImageData(img5,img.width*2,0)
             
             //ctx.putImageData(img5,0,img.height*1)
-            document.body.appendChild(canvas);
+            
         
         };
         
@@ -278,6 +311,18 @@ function getDifW(imgData){
     return newImgData
 }
 
+
+function repeatbyx(listy,re,ti){
+    return out=listy.reduce((acc,itt,ind,lis)=>{
+        if(ind%re==0){
+            var curr=lis.slice(ind,ind+re)
+            for(var i=0;i<ti;i++){
+                curr.map(e=>acc.push(e))
+            }
+        }
+        return acc
+    },[])
+}
 
 
 function getSobel(imgData){
@@ -379,6 +424,25 @@ function compareIMages(imgData1,imgData2){
 }
 
 
+function addIMages(imgData1,imgData2){
+    if(imgData1.width!=imgData2.width||imgData1.height!=imgData2.height){
+        return 0
+    }
+    var clamp = new Uint8ClampedArray(imgData1.data.length)
+    var dif=imgData1.data.reduce((acc,itt,ind,lis)=>{
+        if((ind+1)% 4 == 0){
+            acc[ind]=255
+            return acc
+        }
+        acc[ind]=Math.abs(itt+imgData2.data[ind])
+        return acc
+    },clamp)
+    var newImgData= new ImageData(dif,imgData1.width,imgData1.height)
+
+    return newImgData
+
+}
+
 function getSobelDirectionRGB(imgData){
     //var COX=[[-1,0,1],[-2,0,2],[-1,0,1]]
     //var COY=[[1,2,1],[0,0,0],[-1,-2,-1]]
@@ -426,6 +490,10 @@ function getSobelDirectionRGB(imgData){
 function getHextant(A){
     return Math.floor(A/60)
 }
+
+
+
+
 
 
 function redByAngle(A){
@@ -867,16 +935,52 @@ function makeCellsRGB(imgData,cells){
 
 
 
+function MCfilter(imgData){
+    var out=imgData.reduce((acc,itt,ind,lis)=>{
+         
+        if((ind)% 4 == 0 ){
+            acc[0]+=(itt)
+            return acc
+        }
+        
+        },Uint8ClampedArray(imgData.data.length*64))
 
 
+}
+
+function timesastall8(imgData){
+    var width=imgData.width*4*8
+    var height=imgData.height*4*8
+    var outline=new Uint8ClampedArray(imgData.data.length*64)
+    var out=outline.reduce((acc,itt,ind,lis)=>{
+        var rgb=ind%4
+        var x=ind%width
+        var y=Math.floor(ind/width)
+        
+
+        acc[ind]=imgData.data[ogx*imgData.width+ogy*imgData.width+rgb]
+        return acc
+        },new Uint8ClampedArray(imgData.data.length*64))
+        return new ImageData(out,imgData.width*8,imgData.height*8)
+}
 
 
-
-
-
-
-
-
+function timesastall8ac(imgData){
+    var rows=[]
+    var pixwidth=imgData.width*4
+    for(var rowN=0;rowN<imgData.height;rowN++){
+        rows.push(imgData.data.slice(rowN*pixwidth,(rowN+1)*pixwidth))
+    }
+    rows8=[]
+    rows.map(e=>{
+        for(var i=0;i<8;i++){
+            e.map(d=>rows8.push(d))
+        }
+    })
+    console.log(rows8.length)
+    var out=Uint8ClampedArray.from(rows8)
+    return new ImageData(out,imgData.width,imgData.height*8)
+}
 
 
 function makeCellsRGBCorrect(imgData,cells){

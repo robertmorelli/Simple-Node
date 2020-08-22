@@ -1,6 +1,7 @@
 {
     "animation":["./pages/animation.svg","text/html"],
-    "favicon":["./icon/favicon.webp","image/webp"],
+    
+    "favicon3":["./icon/cold-coffee.webp","image/webp"],
     "mystyle":["./css/mystyles.css","text/css"],
     "editor":["./pages/editor/editor.html","text/html"],
     "editorjs":["./pages/editor/editor.js","text/javascript"],
