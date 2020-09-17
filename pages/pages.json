@@ -13,6 +13,11 @@
     "giraffe":["./pages/giraffe/giraffe.html","text/html"],
     "giraffejs":["./pages/giraffe/giraffe.js","text/javascript"],
     "giraffecss":["./pages/giraffe/giraffe.css","text/css"],
+
+
+    "parab":["./pages/parab/parab.html","text/html"],
+    "parabjs":["./pages/parab/parab.js","text/javascript"],
+    "parabcss":["./pages/parab/parab.css","text/css"],
     
 
     "mosaic":["./pages/mosaic/mosaic.html","text/html"],
