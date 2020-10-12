@@ -24,6 +24,10 @@
     "mosaicjs":["./pages/mosaic/mosaic.js","text/javascript"],
     "mosaiccss":["./pages/mosaic/mosaic.css","text/css"],
 
+    "fractal":["./pages/fractal/fractal.html","text/html"],
+    "fractaljs":["./pages/fractal/fractal.js","text/javascript"],
+    "fractalcss":["./pages/fractal/fractal.css","text/css"],
+
 
     "edges":["./pages/edges/edges.html","text/html"],
     "edgesjs":["./pages/edges/edges.js","text/javascript"],
