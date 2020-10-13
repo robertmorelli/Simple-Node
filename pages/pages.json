@@ -8,11 +8,17 @@
     "editorcss":["./pages/editor/editor.css","text/javascript"],
     "icon:moveback":["./mycons/moveback.svg","image/svg"],
 
-
+    "bezierRaster":["./pages/bezierRaster/bezierRaster.html","text/html"],
+    "bezierRasterjs":["./pages/bezierRaster/bezierRaster.js","text/javascript"],
+    "bezierRastercss":["./pages/bezierRaster/bezierRaster.css","text/css"],
 
     "giraffe":["./pages/giraffe/giraffe.html","text/html"],
     "giraffejs":["./pages/giraffe/giraffe.js","text/javascript"],
     "giraffecss":["./pages/giraffe/giraffe.css","text/css"],
+
+    "distribution":["./pages/distribution/distribution.html","text/html"],
+    "distributionjs":["./pages/distribution/distribution.js","text/javascript"],
+    "distributioncss":["./pages/distribution/distribution.css","text/css"],
     
 
     "mosaic":["./pages/mosaic/mosaic.html","text/html"],
