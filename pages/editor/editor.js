@@ -1,6 +1,6 @@
 function load() {
-    console.log("hi")
-    //window.addEventListener('resize', ()=>{console.log("resize")});
+    //console.log("hi")
+    //window.addEventListener('resize', ()=>{//console.log("resize")});
     selectE = { type: "blank" }
     setHH = true
     meeb = false
@@ -25,7 +25,7 @@ function load() {
     blue = 0;
     AB = true;
 
-    console.log("svgload")
+    //console.log("svgload")
     Pan = new Hammer.Pan({ event: "pan", direction: Hammer.DIRECTION_ALL });
     Panend = new Hammer.Pan({ event: "panend", direction: Hammer.DIRECTION_ALL });
     Panstart = new Hammer.Pan({ event: "panstart", direction: Hammer.DIRECTION_ALL });
@@ -53,7 +53,7 @@ function setCanvas(E) {
         var maybeW = Number(document.getElementById("width").value)
 
         canvasH = Number(document.getElementById("height").value)
-        console.log(maybeW)
+        //console.log(maybeW)
         if (maybeW > 350) {
             canvasW = maybeW
         }
@@ -153,7 +153,7 @@ function setWiggles() {
 
 
 function cleanLinePoints(P) {
-    console.log("cleaning")
+    //console.log("cleaning")
     var lineNotS;
     //lineNotS = `M ${P[0][0]} , ${P[0][1]} `
     lineNotS = ""
@@ -170,7 +170,7 @@ async function drawTap(E) {
     setRed()
     setGreen()
     setBlue()
-    console.log("Tap")
+    //console.log("Tap")
     var toem = {
         string: `<circle  cx="${x(E)}" cy="${y(E)}" 
     style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:${(lineT - 1).toString()}" r=".5">`,
@@ -182,10 +182,10 @@ async function drawTap(E) {
     }
     if (COLDelements.length != 0) {
         if (COLDelements[COLDelements.length - 1].string != toem.string) {
-            console.log("circle time!")
+            //console.log("circle time!")
 
             if (selectE.type == "bacterium") {
-                console.log("attached!")
+                //console.log("attached!")
                 toem.string = `<circle transform="rotate(${selectE.attachment.angle} ${0} ${0})" cx="${x(E) - selectE.attachment.point.x}" cy="${y(E) - selectE.attachment.point.y}" style="fill:black;stroke:rgb(${red},${green},${blue});stroke-width:${(lineT - 1).toString()}" r=".5">`
                 toem.suffix += selectE.attachment.string
                 toem.location = [x(E) - selectE.attachment.point.x, y(E) - selectE.attachment.point.y]
@@ -278,7 +278,7 @@ function sendToCold(toCold) {
 
 function drawPanEnd(E) {
 
-    console.log("smooth line")
+    //console.log("smooth line")
     var toCold = { string: "", points: lineP, type: "line", prefix: "", suffix: "" };
     if (lineP.length > 1) {
         setRed()
@@ -298,13 +298,13 @@ function drawPanEnd(E) {
 
 function FleePanEnd(E) {
     if (lineP.length > 1) {
-    console.log("buzzzz")
+    //console.log("buzzzz")
     var toCold = { string: "", points: lineP, type: "flee", prefix: "", suffix: "" };
     
         setRed()
         setGreen()
         setBlue()
-        console.log(MagicOffset(toCold))
+        //console.log(MagicOffset(toCold))
         toCold.location = MagicOffset(toCold)
         var endlist = []
         var length = 2
@@ -316,12 +316,14 @@ function FleePanEnd(E) {
         toCold.string += `<path fill="none" d="${endlist[0]}" stroke-linecap="round"  stroke-width="${lineT}" style="stroke:rgb(${red},${green},${blue})" stroke="black">`
         toCold.suffix += `<animate attributeName="d" values="${endlist.join(";")}" dur="800ms" repeatCount="indefinite" /></path>`
         sendToCold(toCold)
-    
+    //console.log(lineP)
     lineP = []
     lineS = ""
     getCSVG("fleepanend")
     getHSVG(true)
     }
+    lineP = []
+    lineS = ""
 }
 
 
@@ -334,7 +336,7 @@ function bacteriumPanEnd(E) {
 
     lineP.push([x(E), y(E)])
 
-    console.log("bacteria!")
+    //console.log("bacteria!")
     var toElements = { string: "", points: lineP, type: "bacterium", prefix: "", suffix: "", attachment: {} };
     if (lineP.length > 10) {
         setRed()
@@ -412,7 +414,7 @@ function MagicOffset(E) {
 }
 
 async function magicPanEnd(E) {
-    console.log("magicPanEnd")
+    //console.log("magicPanEnd")
     if(lineP.length<10){
         lineP = []
         lineS = ""
@@ -434,7 +436,7 @@ async function magicPanEnd(E) {
         }
     }
     catch{
-        console.log("ouch")
+        //console.log("ouch")
     }
     lineP = []
     lineS = ""
@@ -469,7 +471,7 @@ function MagicPanStringEngine(E, xl, yl, w) {
 function MagicMultiEngine(Es) {
     setMagic()
     var num = magicNum
-    console.log(num)
+    //console.log(num)
     var sums = [0, 0]
     Array.from(Array(num).keys()).forEach((E) => {
         sums[0] = MagicOffset(COLDelements[COLDelements.length - E - 1])[0] + sums[0]
@@ -568,7 +570,7 @@ function noodlePanEnd(E) {
     
     
     var output = `
-    <path stroke-dasharray="${min} 10000" stroke-linecap="round" d="M ${fpoints[0]} Q ${fpoints[1]} ${lineP[0]}" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
+    <path stroke-dasharray="${min} 10000" stroke-linecap="round" d="M ${fpoints[0]} Q ${fpoints[1]} ${lineP[0]}"  style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
     var suffix = `<animate attributeName="d" values="${animV}" dur="2s" repeatCount="indefinite" /></path>`
     var toElements = { string: output, points: [fpoints, lineP], type: "boob", prefix: "", suffix: suffix }
     toElements.location = MagicOffset(toElements)
@@ -588,14 +590,14 @@ function noodlePanEnd(E) {
 
 async function ham(Ele) {
 
-    console.log("ham")
+    //console.log("ham")
     try{
         Hammer.off('tap',Ele)
     Hammer.off('pan',Ele)
     Hammer.off('panend',Ele)
     }
     catch{
-        console.log("sup")
+        //console.log("sup")
     }
     
     hammer = new Hammer.Manager(Ele, {});
@@ -741,7 +743,7 @@ function getHSVG(override) {
     }
 
     //HOTsvg.innerHTML = out
-    setH(out, override)
+    setH(out, override)//
     //  hsvgBusyOut = out
     return out
 
@@ -753,7 +755,7 @@ function getHSVG(override) {
 
 
 
-async function setH(H, override) {
+async function setH(H, override) {//
     if (setHH || override) {
         setHH = false
         HOTsvg.innerHTML = H
@@ -775,8 +777,8 @@ function returns() {
 
 
 async function getCSVG(yep) {
-    console.log(yep)
-    console.log("getCSVG")
+    //console.log(yep)
+    //console.log("getCSVG")
     var out
 
     if (pause) {
@@ -840,7 +842,7 @@ function makeIMG(EN) {
     return `<image x="${E.x}" y="${E.y}" width="${E.w}" height="${E.h}" xlink:href="${E.string}" />`
 }
 async function getISVG() {
-    console.log("getISVG")
+    //console.log("getISVG")
 
     //`<image x="0" y="0" xlink:href="`+base64Image+`" width="200" height="300" />`
     var out = "";
@@ -863,7 +865,7 @@ function image() {
         getISVG()
     },
         (err) => {
-            console.log("fuck")
+            //console.log("fuck")
         })
 }
 arrayify = E => Array(10)
@@ -911,7 +913,7 @@ function cleanString(input) {
             output += input.charAt(i);
         }
         else {
-            console.log(input.charAt(i))
+            //console.log(input.charAt(i))
         }
     }
     return output;
@@ -965,8 +967,8 @@ async function print(a) {
 
     unhref(a)
     //clipboard.copy(clip+out) 
-    //console.log(out)
-    //  transfer.create().download(clip+out,`/myz`).catch(err=>console.log(err))
+    ////console.log(out)
+    //  transfer.create().download(clip+out,`/myz`).catch(err=>//console.log(err))
 
     return out
 }
@@ -995,7 +997,7 @@ function buttonControl(E, newmode) {
 
 function draw(E) {
     mode = "draw"
-    console.log(mode)
+    //console.log(mode)
     activebutton.setAttribute("color", "secondary")
     E.setAttribute("color", "tertiary")
     activebutton = E
