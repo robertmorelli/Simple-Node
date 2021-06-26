@@ -24,7 +24,6 @@ function load() {
     green = 0;
     blue = 0;
     AB = true;
-    itemCount=0;
 
     //console.log("svgload")
     Pan = new Hammer.Pan({ event: "pan", direction: Hammer.DIRECTION_ALL });
@@ -76,7 +75,7 @@ function setCanvas(E) {
     })
     document.getElementById("width").setAttribute("value", canvasW.toString())
     document.getElementById("height").setAttribute("value", canvasH.toString())
-
+    //ham(DIVsvg)
     getHSVG()
 }
 
@@ -171,18 +170,10 @@ async function drawTap(E) {
     setRed()
     setGreen()
     setBlue()
-    
-    if(COLDelements[COLDelements.length - 1].type=="dot"){
-        if(((COLDelements[COLDelements.length - 1].points[0]==x(E))&&
-        (COLDelements[COLDelements.length - 1].points[1]==y(E)))){
-            return
-        }
-
-    }
-
+    //console.log("Tap")
     var toem = {
         string: `<circle  cx="${x(E)}" cy="${y(E)}" 
-    style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
+    style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:${(lineT - 1).toString()}" r=".5">`,
         points: [x(E), y(E)],
         type: "dot",
         prefix: "",
@@ -191,16 +182,13 @@ async function drawTap(E) {
     }
     if (COLDelements.length != 0) {
         if (COLDelements[COLDelements.length - 1].string != toem.string) {
-            //selectE=COLDelements[COLDelements.length - 1]
+            //console.log("circle time!")
 
             if (selectE.type == "bacterium") {
-                console.log("attached!")
-                toem.string = `<circle transform="rotate(${selectE.attachment.angle} ${0} ${0})" cx="${x(E) - selectE.attachment.point.x}" cy="${y(E) - selectE.attachment.point.y}" style="stroke:none;fill:rgb(${red},${green},${blue});stroke-width:0" r="${lineT/2}">`
+                //console.log("attached!")
+                toem.string = `<circle transform="rotate(${selectE.attachment.angle} ${0} ${0})" cx="${x(E) - selectE.attachment.point.x}" cy="${y(E) - selectE.attachment.point.y}" style="fill:black;stroke:rgb(${red},${green},${blue});stroke-width:${(lineT - 1).toString()}" r=".5">`
                 toem.suffix += selectE.attachment.string
                 toem.location = [x(E) - selectE.attachment.point.x, y(E) - selectE.attachment.point.y]
-            }
-            else{
-                console.log(selectE.type)
             }
 
             toem.suffix += "</circle>"
@@ -208,46 +196,9 @@ async function drawTap(E) {
             sendToCold(toem)
         }
     }
-    else{
-        var toem = {
-            string: `<circle  cx="${x(E)}" cy="${y(E)}" 
-        style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
-            points: [x(E), y(E)],
-            type: "dot",
-            prefix: "",
-            suffix: "</circle>"
-    
-        }
-        
-        sendToCold(toem)
-    }
 
     getCSVG("drawtap")
-    getHSVG(true)
-    //  yog()
-}
-
-async function drawTap22(E) {
-
-    setThicc()
-    setRed()
-    setGreen()
-    setBlue()
-
-    var toem = {
-        string: `<circle  cx="${x(E)}" cy="${y(E)}" 
-    style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
-        points: [x(E), y(E)],
-        type: "dot",
-        prefix: "",
-        suffix: "</circle>"
-
-    }
-    
-    sendToCold(toem)
-
-    getCSVG()
-    
+    getHSVG()
     //  yog()
 }
 
@@ -365,14 +316,12 @@ function FleePanEnd(E) {
         toCold.string += `<path fill="none" d="${endlist[0]}" stroke-linecap="round"  stroke-width="${lineT}" style="stroke:rgb(${red},${green},${blue})" stroke="black">`
         toCold.suffix += `<animate attributeName="d" values="${endlist.join(";")}" dur="800ms" repeatCount="indefinite" /></path>`
         sendToCold(toCold)
-
     //console.log(lineP)
     lineP = []
     lineS = ""
     getCSVG("fleepanend")
     getHSVG(true)
     }
-    
     lineP = []
     lineS = ""
 }
@@ -429,7 +378,6 @@ function bacteriumPanEnd(E) {
 
 
             sendToCold(toElements)
-
         }
     }
     lineP = []
@@ -494,7 +442,7 @@ async function magicPanEnd(E) {
     lineS = ""
     getCSVG("magicpanend")
     getHSVG(true)
-
+    //ham(DIVsvg)
 }
 function MagicPanStringEngine(E, xl, yl, w) {
     if (w != null) {
@@ -598,7 +546,7 @@ function wigglePanEnd(E) {
     dotpoints = []
     getCSVG("wigglepanend")
     getHSVG(true)
-
+    //ham(DIVsvg)
 
 }
 
@@ -635,7 +583,7 @@ function noodlePanEnd(E) {
     dotpoints = []
     getCSVG("noodlepanend")
     getHSVG(true)
-
+    //ham(DIVsvg)
 
 }
 
@@ -643,9 +591,14 @@ function noodlePanEnd(E) {
 async function ham(Ele) {
 
     //console.log("ham")
-    try{Hammer.off('tap',Ele)}catch{}
-    try{Hammer.off('pan',Ele)}catch{}
-    try{Hammer.off('panend',Ele)}catch{}
+    try{
+        Hammer.off('tap',Ele)
+    Hammer.off('pan',Ele)
+    Hammer.off('panend',Ele)
+    }
+    catch{
+        //console.log("sup")
+    }
     
     hammer = new Hammer.Manager(Ele, {});
     Ele.setAttribute("style", "background: #fff")
@@ -657,9 +610,9 @@ async function ham(Ele) {
             setGreen()
             setBlue()
         })
-        hammer.on('tap', drawTap)
-        hammer.on('pan', drawPan)
-        hammer.on('panend', drawPanEnd)
+        hammer.on('tap', async E => drawTap(E))
+        hammer.on('pan', async E => { drawPan(E) })
+        hammer.on('panend', async E => drawPanEnd(E))
     }
     if (mode == "magic") {
         hammer.on('tap', async E => drawTap(E))
@@ -686,12 +639,6 @@ async function ham(Ele) {
         hammer.on('pan', async E => { noodlePan(E) })
         hammer.on('panend', async E => noodlePanEnd(E))
     }
-    if (mode == "selectTool") {
-        console.log("sleect")
-        hammer.on('tap', async E => {E.target.setAttribute("style","filter: drop-shadow(0px 3px 3px rgba(150, 50, 50, 1)); "+E.target.getAttribute("style"))})
-        hammer.on('pan', async E => {  })
-        hammer.on('panend', async E => {})
-    }
 
 
 }
@@ -699,6 +646,7 @@ async function ham(Ele) {
 async function yog(override) {
     if ((platform.is("cordova") && !hamCall) || override) {
         hamCall = true
+        //ham(DIVsvg)
         await delay(0)
         hamCall = false
     }
@@ -1056,14 +1004,7 @@ function draw(E) {
     ham(DIVsvg)
 }
 
-function selectTool(E) {
-    mode = "draw"
-    //console.log(mode)
-    activebutton.setAttribute("color", "secondary")
-    E.setAttribute("color", "tertiary")
-    activebutton = E
-    ham(DIVsvg)
-}
+
 
 
 function pauser(E) {

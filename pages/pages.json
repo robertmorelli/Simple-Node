@@ -16,6 +16,11 @@
     "giraffejs":["./pages/giraffe/giraffe.js","text/javascript"],
     "giraffecss":["./pages/giraffe/giraffe.css","text/css"],
 
+
+    "pdf":["./pages/pdf/pdf.html","text/html"],
+    "pdffile":["./pages/pdf/pdf.pdf","application/pdf"],
+
+
     "parab":["./pages/parab/parab.html","text/html"],
     "parabjs":["./pages/parab/parab.js","text/javascript"],
     "parabcss":["./pages/parab/parab.css","text/css"],
@@ -24,6 +29,10 @@
     "distributionjs":["./pages/distribution/distribution.js","text/javascript"],
     "distributioncss":["./pages/distribution/distribution.css","text/css"],
 
+
+    "mallet":["./pages/mallet/mallet.html","text/html"],
+    "malletjs":["./pages/mallet/mallet.js","text/javascript"],
+    "malletcss":["./pages/mallet/mallet.css","text/css"],
 
 
     "mosaic":["./pages/mosaic/mosaic.html","text/html"],
