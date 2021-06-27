@@ -35,6 +35,10 @@
     "malletcss":["./pages/mallet/mallet.css","text/css"],
 
 
+    "flora":["./pages/flora/flora.html","text/html"],
+    "florajs":["./pages/flora/flora.js","text/javascript"],
+    "floracss":["./pages/flora/flora.css","text/css"],
+
     "mosaic":["./pages/mosaic/mosaic.html","text/html"],
     "mosaicjs":["./pages/mosaic/mosaic.js","text/javascript"],
     "mosaiccss":["./pages/mosaic/mosaic.css","text/css"],

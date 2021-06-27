@@ -177,17 +177,15 @@ async function drawTap(E) {
         (COLDelements[COLDelements.length - 1].points[1]==y(E)))){
             return
         }
-
     }
 
     var toem = {
-        string: `<circle  cx="${x(E)}" cy="${y(E)}" 
+        string: `<circle id="${itemCount},item"  cx="${x(E)}" cy="${y(E)}" 
     style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
         points: [x(E), y(E)],
         type: "dot",
         prefix: "",
         suffix: ""
-
     }
     if (COLDelements.length != 0) {
         if (COLDelements[COLDelements.length - 1].string != toem.string) {
@@ -195,7 +193,7 @@ async function drawTap(E) {
 
             if (selectE.type == "bacterium") {
                 console.log("attached!")
-                toem.string = `<circle transform="rotate(${selectE.attachment.angle} ${0} ${0})" cx="${x(E) - selectE.attachment.point.x}" cy="${y(E) - selectE.attachment.point.y}" style="stroke:none;fill:rgb(${red},${green},${blue});stroke-width:0" r="${lineT/2}">`
+                toem.string = `<circle id="${itemCount},item" transform="rotate(${selectE.attachment.angle} ${0} ${0})" cx="${x(E) - selectE.attachment.point.x}" cy="${y(E) - selectE.attachment.point.y}" style="stroke:none;fill:rgb(${red},${green},${blue});stroke-width:0" r="${lineT/2}">`
                 toem.suffix += selectE.attachment.string
                 toem.location = [x(E) - selectE.attachment.point.x, y(E) - selectE.attachment.point.y]
             }
@@ -210,7 +208,7 @@ async function drawTap(E) {
     }
     else{
         var toem = {
-            string: `<circle  cx="${x(E)}" cy="${y(E)}" 
+            string: `<circle id="${itemCount},item"  cx="${x(E)}" cy="${y(E)}" 
         style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
             points: [x(E), y(E)],
             type: "dot",
@@ -235,7 +233,7 @@ async function drawTap22(E) {
     setBlue()
 
     var toem = {
-        string: `<circle  cx="${x(E)}" cy="${y(E)}" 
+        string: `<circle id="${itemCount},item"  cx="${x(E)}" cy="${y(E)}" 
     style="fill:black;stroke:rgb(${  red},${green},${blue});stroke-width:10}" r="${lineT/2}">`,
         points: [x(E), y(E)],
         type: "dot",
@@ -311,6 +309,8 @@ hep = ""
 
 
 function sendToCold(toCold) {
+    toCold.id=itemCount
+    itemCount++
     if (COLDelements.length == 0) {
         COLDelements.push(toCold)
     }
@@ -335,7 +335,7 @@ function drawPanEnd(E) {
         setBlue()
         toCold.location = MagicOffset(toCold)
         var smoothboi = smoothline(lineP)
-        toCold.string += `<path stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}" d="${smoothboi}"></path>`
+        toCold.string += `<path id="${itemCount},item" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}" d="${smoothboi}"></path>`
         sendToCold(toCold)
 
     }
@@ -362,8 +362,8 @@ function FleePanEnd(E) {
             var toout = smoothline(work)
             endlist.push(toout)
         }
-        toCold.string += `<path fill="none" d="${endlist[0]}" stroke-linecap="round"  stroke-width="${lineT}" style="stroke:rgb(${red},${green},${blue})" stroke="black">`
-        toCold.suffix += `<animate attributeName="d" values="${endlist.join(";")}" dur="800ms" repeatCount="indefinite" /></path>`
+        toCold.string += `<path id="${itemCount},item" fill="none" d="${endlist[0]}" stroke-linecap="round"  stroke-width="${lineT}" style="stroke:rgb(${red},${green},${blue})" stroke="black">`
+        toCold.suffix += `<animate id="${itemCount},item" attributeName="d" values="${endlist.join(";")}" dur="800ms" repeatCount="indefinite" /></path>`
         sendToCold(toCold)
 
     //console.log(lineP)
@@ -419,13 +419,13 @@ function bacteriumPanEnd(E) {
 
             toElements.attachment.point = svgtemp.getPointAtLength(lengthofpath - lengthofpath2)
             toElements.attachment.angle = calcAngleDegrees([p1.x, p2.x], [p1.y, p2.y])
-            toElements.attachment.string += `<animateMotion dur="2s" repeatCount="indefinite"
+            toElements.attachment.string += `<animateMotion id="${itemCount},item" dur="2s" repeatCount="indefinite"
         path="${smoothline(lineP.slice(lengthind, lineP.length - 1))}" rotate="auto" />`
 
 
 
-            toElements.string += `<path stroke-dasharray="${lengthofpath - lengthofpath2} 10000" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}" d="${smoothboi}">`
-            toElements.suffix += `<animate attributeName="stroke-dashoffset" values="0;${-(lengthofpath - (lengthofpath - lengthofpath2))}" dur="2s" repeatCount="indefinite"  /></path>`
+            toElements.string += `<path id="${itemCount},item"  stroke-dasharray="${lengthofpath - lengthofpath2} 10000" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}" d="${smoothboi}">`
+            toElements.suffix += `<animate id="${itemCount},item"  attributeName="stroke-dashoffset" values="0;${-(lengthofpath - (lengthofpath - lengthofpath2))}" dur="2s" repeatCount="indefinite"  /></path>`
 
 
             sendToCold(toElements)
@@ -585,8 +585,8 @@ function wigglePanEnd(E) {
     var fpoints = dotpoints.slice(-2)
     var animV = lineP.map(E => { return `M ${fpoints[0]} Q ${E} ${fpoints[1]}` }).join(";")
     var output = `
-    <path d="M ${fpoints[0]} Q ${lineP[0]} ${fpoints[1]}" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
-    var suffix = `<animate attributeName="d" values="${animV}" dur="6s" repeatCount="indefinite" /></path>`
+    <path id="${itemCount},item" d="M ${fpoints[0]} Q ${lineP[0]} ${fpoints[1]}" stroke-linecap="round" style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
+    var suffix = `<animate id="${itemCount},item" attributeName="d" values="${animV}" dur="6s" repeatCount="indefinite" /></path>`
     var toElements = { string: output, points: [fpoints, lineP], type: "boob", prefix: "", suffix: suffix }
     toElements.location = MagicOffset(toElements)
     
@@ -622,8 +622,8 @@ function noodlePanEnd(E) {
     
     
     var output = `
-    <path stroke-dasharray="${min} 10000" stroke-linecap="round" d="M ${fpoints[0]} Q ${fpoints[1]} ${lineP[0]}"  style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
-    var suffix = `<animate attributeName="d" values="${animV}" dur="2s" repeatCount="indefinite" /></path>`
+    <path id="${itemCount},item" stroke-dasharray="${min} 10000" stroke-linecap="round" d="M ${fpoints[0]} Q ${fpoints[1]} ${lineP[0]}"  style="fill:none;stroke:rgb(${red},${green},${blue});stroke-width:${lineT}">`
+    var suffix = `<animate id="${itemCount},item" attributeName="d" values="${animV}" dur="2s" repeatCount="indefinite" /></path>`
     var toElements = { string: output, points: [fpoints, lineP], type: "boob", prefix: "", suffix: suffix }
     toElements.location = MagicOffset(toElements)
     
@@ -688,11 +688,20 @@ async function ham(Ele) {
     }
     if (mode == "selectTool") {
         console.log("sleect")
-        hammer.on('tap', async E => {E.target.setAttribute("style","filter: drop-shadow(0px 3px 3px rgba(150, 50, 50, 1)); "+E.target.getAttribute("style"))})
+        hammer.on('tap', selectTap)
         hammer.on('pan', async E => {  })
         hammer.on('panend', async E => {})
     }
 
+
+}
+
+function selectTap(E){
+    E.target.setAttribute("style","filter: drop-shadow(0px 3px 3px rgba(150, 50, 50, 1)); "+E.target.getAttribute("style"))
+    //selectE=COLDelements[E.target.id]
+    if(E.target.id.split(",").length==2){
+        selectE=COLDelements[parseInt(E.target.id.split(",")[0])]
+    }
 
 }
 
@@ -1067,8 +1076,12 @@ function selectTool(E) {
 
 
 function pauser(E) {
-    pause = !pause
-    if (pause) {
+    if(typeof variable == 'undefined'){
+        plause=false
+    }
+    cow = document.getElementById("cow").getAnimations()
+    console.log(cow)
+    if (plause) {
         E.setAttribute("color", "success")
         E.innerHTML = `<ion-label>
         <ion-icon src="/ionicon:play-circle">

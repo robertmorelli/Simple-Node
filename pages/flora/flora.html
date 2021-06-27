@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+  <link rel="icon" type="image/icon" href="data:image/svg+xml,%3Csvg version='1.1' baseProfile='full' width='1000' height='1000' xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%230000' width='100%25' height='100%25'/%3E%3Cg transform='scale(1.2 1.2) translate(-150 -100)'%3E%3Cg stroke='none'%3E%3Cpath fill='DarkSlateGrey' d='M 685 485 C 700 455 645 400 616 415 L 250 850 C 300 900 685 485 685 485 '/%3E%3Cpath fill='DarkSeaGreen' d='M 685 485 C 705 455 645 395 615 415 C 585 435 199 800 250 850 C 380 800 605 360 685 485 '/%3E%3Cpath fill='%231F3F3F' d='M 640 490 C 620 470 535 570 545 580 C 555 590 650 500 640 490 '/%3E%3Cpath fill='Plum' d='M 670 330 C 662 370 730 470 800 400 C 900 300 900 200 890 150 C 850 300 700 220 670 330 '/%3E%3Cpath fill='Orchid' d='M 670 330 C 662 370 730 470 800 400 C 900 300 894 200 894 200 C 850 350 720 380 670 330 '/%3E%3C/g%3E%3Cg fill='none' stroke-width='20' stroke-linecap='round'%3E%3Cpath stroke='none' d='M 670 330 C 662 370 730 470 800 400 C 900 300 900 200 900 150 '/%3E%3Cpath stroke='none' d='M 685 485 C 705 455 645 395 615 415 C 585 435 200 800 250 850 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+  <!--<script src="https://unpkg.com/@ionic/core@latest/dist/ionic.js"></script>
+  <link href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>-->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+  <script src="/florajs"></script>
+  <link href="/floracss" rel="stylesheet">
+</head>
+
+<body onload="load()" >
+  <ion-content style="--background:#222222">
+    <div style="height: 100%;width: 205px;position: fixed;left: 0;" style="font-size: 200%;height:100%">
+      <ion-card style="--background: #171717">
+        <div style="padding:0px">
+          <P style="padding:10px;margin: 0px">
+            <ion-label style="--background: #171717;font-size: 30px">
+              <ion-label>
+                
+                
+                
+                  <ion-chip id="selectshow" color="light">
+                    <ion-label>
+                      <ion-icon src="/ionicon:caret-back">
+                      </ion-icon>
+                    </ion-label>
+                    <ion-chip onclick="showSelected()">
+                      <ion-label>
+                        <ion-icon color="primary" src="/ionicon:location">
+                        </ion-icon>
+                      </ion-label>
+                    </ion-chip>
+                    <ion-label>
+                      <ion-icon src="/ionicon:caret-forward">
+                      </ion-icon>
+                    </ion-label>
+                  </ion-chip>
+                
+                <ion-chip id="pauser" color="danger" onclick="pauser(this)">
+                  <ion-label>
+                    <ion-icon src="/ionicon:pause-circle">
+                    </ion-icon>
+                  </ion-label>
+                </ion-chip>
+              </ion-label>
+              <ion-label style="height:30px">
+                <div>
+                  <ion-range id="redSlider" min="0" max="255" step="1" color="danger"
+                    style="width: 100%">
+                  </ion-range>
+                  <ion-range id="greenSlider" min="0" max="255" step="1" color="success"
+                    style="width: 100%">
+                  </ion-range>
+                  <ion-range id="blueSlider" min="0" max="255" step="1" color="secondary"
+                    style="width: 100%">
+                  </ion-range>
+                  <a>
+                    <ion-range id="thicknessSlider" min="3" max="14" step="1" color="light"
+                      style="width: 100%">
+                    </ion-range>
+                    <!--<ion-row class="align-items-flex-end">
+                      <ion-input id="magicitemnumber" type="number" value="1" style="width:  10%;font-size: 17pt;"
+                        color="tertiary">
+                      </ion-input>
+                    </ion-row>-->
+                  </a>
+                </div>
+              </ion-label>
+              <div style="padding:0px">
+                <P style="padding-top:10px;padding-left:10px;padding-right: 10px;margin: 0px">
+                  <ion-row>
+                    <ion-chip color="success" id="download" style="font-size: 30px;--background:#222">
+                      <ion-input spellcheck="false" id="filename" type="text" value="mySVG" style="font-size: 14px"
+                        color="success">
+                      </ion-input>
+                      <ion-label style="font-size: 14px;padding-right: 10px;">
+                        .svg
+                      </ion-label>
+                      <a onclick="print(this)" download="#">
+                        <ion-icon style="font-size: 19px;" color="success" src="/ionicon:save">
+                        </ion-icon>
+                      </a>
+                    </ion-chip>
+                  </ion-row>
+                </P>
+              </div>
+              <div style="padding:0px">
+                <P style="padding-top:10px;padding-left:10px;padding-right: 10px;margin: 0px">
+                  <ion-row>
+                    <ion-chip style="font-size: 30px;--background:#222">
+                      <style>
+                        input[type=number]::-webkit-inner-spin-button,
+                        input[type=number]::-webkit-outer-spin-button {
+                          -webkit-appearance: none;
+                          -moz-appearance: none;
+                          appearance: none;
+                          margin: 0;
+                        }
+                      </style>
+                      <ion-input id="width" type="number" value="1" style="font-size: 14px;--background:#222"
+                        color="light">
+                      </ion-input>
+                      <ion-input id="height" type="number" value="1" style="font-size: 14px;--background:#222;"
+                        color="light">
+                      </ion-input>
+                      <a>
+                        <ion-icon onclick="buttonSetWidthAutomatic()" style="font-size: 23px;" color="medium" src="/ionicon:cog">
+                        </ion-icon>
+                        <ion-icon onclick="buttonSetWidthControlled()" style="font-size: 23px;" color="medium"
+                          src="/ionicon:log-in"></ion-icon>
+                      </a>
+                    </ion-chip>
+                  </ion-row>
+                </P>
+              </div>
+            </ion-label>
+          </P>
+        </div>
+      </ion-card>
+    </div>
+    <div id="rightBlock" style="left:1;margin-left: 205px; position: fixed;">
+      <ion-card style="background: #171717;">
+        <div style="padding:0px">
+          <P style="padding:10px;margin: 0px">
+            <ion-label style="--background: #171717;font-size: 30px">
+              <ion-chip id="resetB" color="danger" onclick="reset()">
+                <ion-label>
+                  <ion-icon src="/ionicon:close-circle">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="backB" color="warning" onclick="back()">
+                <ion-label>
+                  <ion-icon src="/ionicon:arrow-undo">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="Draw" color="tertiary">
+                <ion-label>
+                  <ion-icon src="/ionicon:brush">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="AnimateMove" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:color-wand">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="AnimateArch" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:egg">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="AnimateInsect" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:bug">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="AnimateSnake" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:pulse">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="AnimateTail" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:bonfire">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+              <ion-chip id="Select" color="secondary">
+                <ion-label>
+                  <ion-icon src="/ionicon:bonfire">
+                  </ion-icon>
+                </ion-label>
+              </ion-chip>
+            </ion-label>
+          </P>
+        </div>
+      </ion-card>
+      <ion-card id="CARDsvg">
+        <svg  id="DIVsvg" xmlns="http://www.w3.org/2000/svg">
+          <svg id="BACKsvg">
+          </svg>
+          <svg id="COLDsvg">
+          </svg>
+          <svg id="HOTTsvg">
+          </svg>
+        </svg>
+      </ion-card>
+    </div>
+  </ion-content>
+</body>
+
+</html>

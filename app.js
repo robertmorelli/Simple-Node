@@ -4,7 +4,7 @@ const http = require('http');
 //var projectName = require("hammerjs")
 var fs = require('fs');
 const url = require('url');
-const hostname = 'localhost';//
+const hostname = '10.0.0.5';//
 const port = 80;
 /*const pages={
   "animation":['./pages/animation.svg','text/html'],

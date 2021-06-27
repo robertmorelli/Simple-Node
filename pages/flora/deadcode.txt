@@ -1,0 +1,44 @@
+
+
+    if((Math.abs(DrawTool.points[DrawTool.points.length-1]-y(E))**2+
+    Math.abs(DrawTool.points[DrawTool.points.length-2]-x(E))**2)<300
+    ){return}
+
+    if(DrawTool.count>1){
+        DrawTool.string+=
+        ` ${
+            DrawTool.points[DrawTool.points.length-3]
+        } ${
+            DrawTool.points[DrawTool.points.length-4]
+        } ${
+            ((((x(E) | 0) - (DrawTool.points[DrawTool.points.length-2] | 0)) / 2) 
+            + (DrawTool.points[DrawTool.points.length-2] | 0))
+          } ${
+            ((((y(E) | 0) - (DrawTool.points[DrawTool.points.length-1] | 0)) / 2) 
+            + (DrawTool.points[DrawTool.points.length-1] | 0))
+          } `
+    }
+    else if(DrawTool.count==0){
+        DrawTool.string+=`M ${x(E)} ${y(E)} Q`
+    }
+    else{
+        DrawTool.string+=` ${x(E)} ${y(E)} `
+    }
+    DrawTool.points.push(x(E))
+    DrawTool.points.push(y(E))
+    DrawTool.count++
+    console.log(`<path stroke-linecap="round" fill="none" stroke="black" stroke-width="10" d="${DrawTool.string}"/>`)
+    fastDraw(`<path stroke-linecap="round" fill="none" stroke="black" stroke-width="10" d="${DrawTool.string}"/>`)
+}
+
+
+//part of drawing
+    else if(DrawTool.count>0){
+        /*DrawTool.string+=`L ${
+            ((((X | 0) - (DrawTool.points[0] | 0)) / 2) 
+            + (DrawTool.points[0] | 0))
+          } ${
+            ((((Y | 0) - (DrawTool.points[1] | 0)) / 2) 
+            + (DrawTool.points[1] | 0))
+          } `*/
+    }
