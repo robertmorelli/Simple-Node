@@ -75,5 +75,6 @@
     "ionicon:location":["./ionicons/location.svg","image/svg"],
     "ionicon:sync-circle":["./ionicons/sync-circle.svg","image/svg"],
     "ionicon:arrow-undo":["./ionicons/arrow-undo.svg","image/svg"],
-    "ionicon:save":["./ionicons/save.svg","image/svg"]
+    "ionicon:save":["./ionicons/save.svg","image/svg"],
+    "ionicon:shapes":["./ionicons/shapes.svg","image/svg"]
   }
