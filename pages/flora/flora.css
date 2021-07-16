@@ -3,3 +3,14 @@
     color:"danger"
 }
 
+ion-icon {
+    --ionicon-stroke-width: 32px;
+  }
+
+
+
+  .tooltip {display: none;}
+  .toolbox:hover ~ .tooltip {display: block;}
+
+
+  img { display: inline-box; }

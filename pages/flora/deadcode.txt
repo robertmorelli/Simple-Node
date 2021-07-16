@@ -42,3 +42,30 @@
             + (DrawTool.points[1] | 0))
           } `*/
     }
+
+
+
+
+
+
+
+
+
+
+    if(false&&((Math.abs(DrawTool.points[DrawTool.points.length-1]-Y)**2+
+    Math.abs(DrawTool.points[DrawTool.points.length-2]-X)**2)<DrawTool.threshhold**2)&&DrawTool.count>1
+    ){
+        if(DrawTool.threshhold>5){
+            try{fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}Q ${
+                ((((X | 0) - (DrawTool.points[DrawTool.points.length-2] | 0)) / 2) 
+                + (DrawTool.points[DrawTool.points.length-2] | 0))
+            } ${
+                ((((Y | 0) - (DrawTool.points[DrawTool.points.length-1] | 0)) / 2) 
+                + (DrawTool.points[DrawTool.points.length-1] | 0))
+            } ${X} ${Y}"/>`)}catch{}
+        }
+        else{
+            try{fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}"/>`)}catch{}
+        }
+        return
+    }

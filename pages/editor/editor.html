@@ -51,6 +51,9 @@
               </ion-label>
               <ion-label style="height:30px">
                 <div>
+                  <ion-label>
+                    <ion-chip color="light">Color Picker</ion-chip>
+                  </ion-label>
                   <ion-range id="red" (ionChange)="setThicc()" min="0" max="255" step="1" color="danger"
                     style="width: 100%">
                   </ion-range>
@@ -61,6 +64,9 @@
                     style="width: 100%">
                   </ion-range>
                   <a>
+                    <ion-label>
+                      <ion-chip color="light">Size Picker</ion-chip>
+                    </ion-label>
                     <ion-range id="thickness" oninput="setThicc()" min="3" max="14" step="1" color="light"
                       style="width: 100%">
                     </ion-range>

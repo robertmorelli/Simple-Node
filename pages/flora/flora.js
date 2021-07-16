@@ -24,28 +24,49 @@ DrawTool.string = ""
 DrawTool.count = 0
 DrawTool.points = []
 DrawTool.pointsComputed = []
-DrawTool.threshhold = 4
-DrawTool.Click = E => {}
+DrawTool.threshhold = 3
+DrawTool.Click = E => {
+    console.log("hello")
+    X = x(E)
+    Y = y(E)
+    coldobject={
+        id : `${idCounter++}` ,
+        type : "Dot" ,
+        opening : "circle" ,
+        openingstring : "<circle>" ,
+        style : {
+            "style" : `fill:rgb(${redValue},${greenValue},${blueValue})` ,
+            "r" : `${thickValue/2}` ,
+            "x" : X,
+            "y" : Y
+        } ,
+        stylestring : ` cx="${X}" cy="${Y}" style="fill:rgb(${redValue},${greenValue},${blueValue})" r="${thickValue/2}"` ,
+        data : {
+            x : X ,
+            y : Y ,
+        } ,
+        datastring : "" ,
+        closeing : "</circle>" ,
+        selfclosed : true ,
+        interior : {} ,
+        hasinterior : false ,
+        }
+    coldobject.pausedVersion = coldobject
+    slowItems.push(coldobject)
+    DrawTool.string = ""
+    DrawTool.count = 0
+    DrawTool.points = []
+    DrawTool.pointsComputed = []
+    slowDraw()
+}
+
 DrawTool.Move = E => {
-    var X = x(E)
-    var Y = y(E)
+    X = x(E)
+    Y = y(E)
+    
     if(((Math.abs(DrawTool.points[DrawTool.points.length-1]-Y)**2+
     Math.abs(DrawTool.points[DrawTool.points.length-2]-X)**2)<DrawTool.threshhold**2)&&DrawTool.count>1
-    ){
-        if(DrawTool.threshhold>5){
-            try{fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}Q ${
-                ((((X | 0) - (DrawTool.points[DrawTool.points.length-2] | 0)) / 2) 
-                + (DrawTool.points[DrawTool.points.length-2] | 0))
-            } ${
-                ((((Y | 0) - (DrawTool.points[DrawTool.points.length-1] | 0)) / 2) 
-                + (DrawTool.points[DrawTool.points.length-1] | 0))
-            } ${X} ${Y}"/>`)}catch{}
-        }
-        else{
-            try{fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}"/>`)}catch{}
-        }
-        return
-    }
+    ){return}
 
     if(DrawTool.count>1){
         DrawTool.string+=
@@ -64,7 +85,7 @@ DrawTool.Move = E => {
     else if(DrawTool.count==0){
         DrawTool.string+=`M ${X} ${Y} `
     }
-    fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}L${X} ${Y}"/>`)
+    fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${DrawTool.string}"/>`)
     if(DrawTool.count>1){
         DrawTool.pointsComputed.push(DrawTool.points[DrawTool.points.length-2])
         DrawTool.pointsComputed.push(DrawTool.points[DrawTool.points.length-1])
@@ -78,10 +99,12 @@ DrawTool.Move = E => {
     DrawTool.count++
 }
 DrawTool.End = E => {
+    //var X = x(E)
+    //var Y = y(E)
     if(DrawTool.count<2){return}
     if(DrawTool.threshhold>5){
-        var X = x(E)
-        var Y = y(E)
+        //var X = x(E)
+        //var Y = y(E)
         DrawTool.string+=
             `Q ${
                 DrawTool.points[DrawTool.points.length-2]
@@ -100,9 +123,10 @@ DrawTool.End = E => {
             + (DrawTool.points[DrawTool.points.length-2] | 0)))
         DrawTool.pointsComputed.push(((((Y | 0) - (DrawTool.points[DrawTool.points.length-1] | 0)) / 2) 
             + (DrawTool.points[DrawTool.points.length-1] | 0)))
-        DrawTool.points.push(X)
-        DrawTool.points.push(Y)
+        
     }
+    DrawTool.points.push(X)
+    DrawTool.points.push(Y)
     coldobject = {
         id : `${idCounter++}` ,
         type : "Drawing" ,
@@ -119,8 +143,8 @@ DrawTool.End = E => {
             points : DrawTool.points ,
             computedpoints : DrawTool.computedpoints ,
         } ,
-        datastring : `${DrawTool.string}` ,
-        closeing : "</path>" ,
+        datastring : `${DrawTool.string}L${X} ${Y}` ,
+        closing : "</path>" ,
         selfclosed : true ,
         interior : {} ,
         hasinterior : false ,
@@ -158,9 +182,170 @@ AnimateInsectTool.Complete = E => {}
 
 AnimateSnakeTool = {}
 AnimateSnakeTool.name = "AnimateSnake"
-AnimateSnakeTool.Click = E => {}
-AnimateSnakeTool.Move = E => {}
-AnimateSnakeTool.End = E => {}
+AnimateSnakeTool.string = ""
+AnimateSnakeTool.count = 0
+AnimateSnakeTool.points = []
+AnimateSnakeTool.pointsComputed = []
+AnimateSnakeTool.threshhold = 3
+AnimateSnakeTool.Click = E => {
+    console.log("hello")
+    X = x(E)
+    Y = y(E)
+    coldobject={
+        id : `${idCounter++}` ,
+        type : "Dot" ,
+        opening : "circle" ,
+        openingstring : "<circle>" ,
+        style : {
+            "style" : `fill:rgb(${redValue},${greenValue},${blueValue})` ,
+            "r" : `${thickValue/2}` ,
+            "x" : X,
+            "y" : Y
+        } ,
+        stylestring : ` cx="${X}" cy="${Y}" style="fill:rgb(${redValue},${greenValue},${blueValue})" r="${thickValue/2}"` ,
+        data : {
+            x : X ,
+            y : Y ,
+        } ,
+        datastring : "" ,
+        closeing : "</circle>" ,
+        selfclosed : true ,
+        interior : {} ,
+        hasinterior : false ,
+        }
+    coldobject.pausedVersion = coldobject
+    slowItems.push(coldobject)
+    AnimateSnakeTool.string = ""
+    AnimateSnakeTool.count = 0
+    AnimateSnakeTool.points = []
+    AnimateSnakeTool.pointsComputed = []
+    slowDraw()
+}
+
+AnimateSnakeTool.Move = E => {
+    X = x(E)
+    Y = y(E)
+    if(((Math.abs(AnimateSnakeTool.points[AnimateSnakeTool.points.length-1]-Y)**2+
+    Math.abs(AnimateSnakeTool.points[AnimateSnakeTool.points.length-2]-X)**2)<AnimateSnakeTool.threshhold**2)&&AnimateSnakeTool.count>1
+    ){return}
+
+    if(AnimateSnakeTool.count>1){
+        AnimateSnakeTool.string+=
+        `Q ${
+            AnimateSnakeTool.points[AnimateSnakeTool.points.length-2]
+        } ${
+            AnimateSnakeTool.points[AnimateSnakeTool.points.length-1]
+        } ${
+            ((((X | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)) / 2) 
+            + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0))
+          } ${
+            ((((Y | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)) / 2) 
+            + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0))
+          } `
+    }
+    else if(AnimateSnakeTool.count==0){
+        AnimateSnakeTool.string+=`M ${X} ${Y} `
+    }
+    fastDraw(`<path stroke-linecap="round" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}" d="${AnimateSnakeTool.string}"/>`)
+    if(AnimateSnakeTool.count>1){
+        AnimateSnakeTool.pointsComputed.push(AnimateSnakeTool.points[AnimateSnakeTool.points.length-2])
+        AnimateSnakeTool.pointsComputed.push(AnimateSnakeTool.points[AnimateSnakeTool.points.length-1])
+        AnimateSnakeTool.pointsComputed.push( ((((X | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)) / 2) 
+        + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)))
+        AnimateSnakeTool.pointsComputed.push(((((Y | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)) / 2) 
+        + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)))
+    }
+    AnimateSnakeTool.points.push(X)
+    AnimateSnakeTool.points.push(Y)
+    AnimateSnakeTool.count++
+}
+AnimateSnakeTool.End = E => {
+    //var X = x(E)
+    //var Y = y(E)
+    if(AnimateSnakeTool.count<2){return}
+    if(AnimateSnakeTool.threshhold>5){
+        //var X = x(E)
+        //var Y = y(E)
+        AnimateSnakeTool.string+=
+            `Q ${
+                AnimateSnakeTool.points[AnimateSnakeTool.points.length-2]
+            } ${
+                AnimateSnakeTool.points[AnimateSnakeTool.points.length-1]
+            } ${
+                ((((X | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)) / 2) 
+                + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0))
+            } ${
+                ((((Y | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)) / 2) 
+                + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0))
+            } `
+        AnimateSnakeTool.pointsComputed.push(AnimateSnakeTool.points[AnimateSnakeTool.points.length-2])
+        AnimateSnakeTool.pointsComputed.push(AnimateSnakeTool.points[AnimateSnakeTool.points.length-1])
+        AnimateSnakeTool.pointsComputed.push( ((((X | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)) / 2) 
+            + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-2] | 0)))
+        AnimateSnakeTool.pointsComputed.push(((((Y | 0) - (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)) / 2) 
+            + (AnimateSnakeTool.points[AnimateSnakeTool.points.length-1] | 0)))
+        
+    }
+    AnimateSnakeTool.points.push(X)
+    AnimateSnakeTool.points.push(Y)
+    coldobject = {
+        id : `${idCounter++}` ,
+        type : "SnakePath" ,
+        opening : "path" ,
+        openingstring : "<path>" ,
+        style : {
+            "stroke-linecap" : "round" ,
+            "fill" : "none" ,
+            "style" : `stroke:rgb(${redValue},${greenValue},${blueValue})` ,
+            "stroke-width" : thickValue+"" ,
+            "Stroke-dasharray" : "100 1000000"
+        } ,
+        stylestring : `stroke-linecap="round" Stroke-dasharray="100 1000000" fill="none" style="stroke:rgb(${redValue},${greenValue},${blueValue})" stroke-width="${thickValue}"` ,
+        data : {
+            points : AnimateSnakeTool.points ,
+            computedpoints : AnimateSnakeTool.computedpoints ,
+        } ,
+        datastring : `${AnimateSnakeTool.string}L${X} ${Y}` ,
+        closing : "</path>" ,
+        selfclosed : false ,
+        interior : {} ,
+        hasinterior : true ,
+        }
+//<animate id="0,item"  attributeName="stroke-dashoffset" values="0;-675.715087890625" dur="2s" repeatCount="indefinite"  />
+    var testPath=document.createElementNS("http://www.w3.org/2000/svg", "path");
+    testPath.setAttribute("d", `${AnimateSnakeTool.string}L${X} ${Y}`)
+    var lennn=testPath.getTotalLength()
+    console.log(testPath)
+    console.log(testPath)
+    coldobject.interior = {
+        id : `${idCounter++}` ,
+        type : "SnakeAnimation" ,
+        opening : "animate" ,
+        openingstring : "<animate>" ,
+        style : {
+            "attributeName" : "stroke-dashoffset",
+            "values" : "0;-${lennn-100}",
+            "dur" : "2s",
+            "repeatCount" : "indefinite"
+        } ,
+        stylestring : `attributeName="stroke-dashoffset" values="0;-${lennn-100}" dur="2s" repeatCount="indefinite"` ,
+        
+        datastring : `${AnimateSnakeTool.string}L${X} ${Y}` ,
+        closing : "</animate>" ,
+        selfclosed : true ,
+        interior : {} ,
+        hasinterior : false ,
+
+
+    }
+    coldobject.pausedVersion = coldobject
+    slowItems.push(coldobject)
+    AnimateSnakeTool.string = ""
+    AnimateSnakeTool.count = 0
+    AnimateSnakeTool.points = []
+    AnimateSnakeTool.pointsComputed = []
+    slowDraw()
+}
 AnimateSnakeTool.Complete = E => {}
 
 AnimateTailTool = {}
@@ -219,10 +404,12 @@ function changeToolTo(E){
     CurrentTool = Tools[this.id]
     for(var tool in Tools){
         if(tool != this.id){
-            document.getElementById(tool).setAttribute("color","secondary")
+            //document.getElementById(tool).setAttribute("color","secondary")
+            document.getElementById(tool).setAttribute("style",``)
         }
         else{
-            document.getElementById(tool).setAttribute("color","tertiary")
+            //document.getElementById(tool).setAttribute("color","tertiary")
+            document.getElementById(tool).setAttribute("style",`filter: invert()`)
         }
     }
 }
@@ -239,7 +426,7 @@ function mouseConstructor(){
 }
 
 function clickHandle( E ){
-    if( ( E.timeStamp - clickTimeStamp ) < 200 ){
+    if( ( E.timeStamp - clickTimeStamp ) < 100 ){
         CurrentTool.Click( E )
     }
 }
@@ -258,7 +445,7 @@ function touchDownHandle(E){
 
 function mouseUpHandle(E){
     document.removeEventListener('mousemove',CurrentTool.Move)
-    if((E.timeStamp-clickTimeStamp)>=200){
+    if((E.timeStamp-clickTimeStamp)>=100){
         CurrentTool.End(E)
     }
     fastDraw("")
@@ -266,7 +453,7 @@ function mouseUpHandle(E){
 
 function touchUpHandle(E){
     document.removeEventListener('touchmove',CurrentTool.Move)
-    if((E.timeStamp-clickTimeStamp)>=200){
+    if((E.timeStamp-clickTimeStamp)>=100){
         CurrentTool.End(E)
     }
     fastDraw("")
@@ -372,6 +559,17 @@ function BackOne(){
     slowItems.pop()
     slowDraw()
 }
+
+
+function save(button){
+    var out = ` width="${canvasW}" height="${canvasH}" xmlns="http://www.w3.org/2000/svg">${COLDsvg.innerHTML}</svg>`
+    var clip = `data:image/svg+xml;utf8,<svg`
+    button.setAttribute("download", document.getElementById("filename").value)
+    button.href = clip + out
+    setTimeout(function(){ button.removeAttribute("href"); }, 10);
+    
+}
+
 
 /*
 coldobject={

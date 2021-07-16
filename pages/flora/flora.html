@@ -15,27 +15,18 @@
 </head>
 
 <body onload="load()" >
+             
   <ion-content style="--background:#222222">
-    <div style="height: 100%;width: 205px;position: fixed;left: 0;" style="font-size: 200%;height:100%">
+    <div id="leftblock" style="height: 100%;width: 205px;position: fixed;left: 0;" style="font-size: 200%;height:100%"><!---->
       <ion-card style="--background: #171717">
         <div style="padding:0px">
           <P style="padding:10px;margin: 0px">
             <ion-label style="--background: #171717;font-size: 30px">
               <ion-label>
+                <img src="/icon:color" height="50" width="50"/>
                 
-                
-                
-                 
-                
-                <ion-chip id="pauser" color="danger" onclick="pauser(this)">
-                  <ion-label>
-                    <ion-icon src="/ionicon:pause-circle">
-                    </ion-icon>
-                  </ion-label>
-                </ion-chip>
               </ion-label>
-              <ion-label style="height:30px">
-                <div>
+
                   <ion-range id="redSlider" min="0" max="255" step="1" color="danger"
                     style="width: 100%">
                   </ion-range>
@@ -45,18 +36,15 @@
                   <ion-range id="blueSlider" min="0" max="255" step="1" color="secondary"
                     style="width: 100%">
                   </ion-range>
-                  <a>
-                    <ion-range id="thicknessSlider" min="3" max="14" step="1" color="light"
+                  <ion-label>
+                    <img src="/icon:size" height="50" width="50"/>
+                    
+                  </ion-label>
+                  <ion-range id="thicknessSlider" min="3" max="14" step="1" color="light"
                       style="width: 100%">
                     </ion-range>
-                    <!--<ion-row class="align-items-flex-end">
-                      <ion-input id="magicitemnumber" type="number" value="1" style="width:  10%;font-size: 17pt;"
-                        color="tertiary">
-                      </ion-input>
-                    </ion-row>-->
-                  </a>
-                </div>
-              </ion-label>
+
+
               <div style="padding:0px">
                 <P style="padding-top:10px;padding-left:10px;padding-right: 10px;margin: 0px">
                   <ion-row>
@@ -67,7 +55,7 @@
                       <ion-label style="font-size: 14px;padding-right: 10px;">
                         .svg
                       </ion-label>
-                      <a onclick="print(this)" download="#">
+                      <a onclick="save(this)" download="#">
                         <ion-icon style="font-size: 19px;" color="success" src="/ionicon:save">
                         </ion-icon>
                       </a>
@@ -109,76 +97,26 @@
         </div>
       </ion-card>
     </div>
-    <div id="rightBlock" style="left:1;margin-left: 205px; position: fixed;">
-      <ion-card style="background: #171717;">
-        <div style="padding:0px">
-          <P style="padding:10px;margin: 0px">
-            <ion-label style="--background: #171717;font-size: 30px">
-              <ion-chip id="Reset" color="danger" onclick="Reset()">
-                <ion-label>
-                  <ion-icon src="/ionicon:close-circle">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="BackOne" color="warning" onclick="BackOne()">
-                <ion-label>
-                  <ion-icon src="/ionicon:arrow-undo">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="Draw" color="tertiary">
-                <ion-label>
-                  <ion-icon src="/ionicon:brush">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="AnimateMove" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:color-wand">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="AnimateArch" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:egg">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="AnimateInsect" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:bug">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="AnimateSnake" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:pulse">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="AnimateTail" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:bonfire">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="Select" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:bonfire">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-              <ion-chip id="Blobframe" color="secondary">
-                <ion-label>
-                  <ion-icon src="/ionicon:shapes">
-                  </ion-icon>
-                </ion-label>
-              </ion-chip>
-            </ion-label>
-          </P>
+    <div  id="rightBlock" style="left:1;margin-left: 205px;position: fixed; "><!--position: fixed;-->
+      
+        <div style="padding:10px">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+              <img id="Reset" onclick="Reset()" src="/icon:x" height="50" width="50" />
+              <img id="BackOne" onclick="BackOne()" src="/icon:back" height="50" width="50" />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <img id="Draw"  src="/icon:brush" height="50" width="50" style="filter: invert();"/>
+              <img id="AnimateMove"  src="/icon:wand" height="50" width="50"/>
+              <img id="AnimateArch" src="/icon:arch" height="50" width="50"/>
+              <img id="AnimateInsect" src="/icon:insect" height="50" width="50"/>
+              <a class="toolbox">
+                <img class="tool toolbox" id="AnimateSnake" src="/icon:snake" height="50" width="50"/>
+                <img   style="position: fixed  ;top:520px;left:10px;" src="/icon:snakeTutorial" class="tooltip"  height="420" width="420"  >
+              </a>
+              <img id="AnimateTail" src="/icon:arm" height="50" width="50"/>
+              <img id="Blobframe" src="/icon:morph2" height="50" width="50" />
+              <img id="Select"  src="/icon:x"   height="50" width="50"/>
         </div>
-      </ion-card>
-      <ion-card id="CARDsvg">
+      <ion-card id="CARDsvg" style="z-index: 3;padding:0px">
         <svg  id="DIVsvg" xmlns="http://www.w3.org/2000/svg">
           <svg id="BACKsvg">
           </svg>

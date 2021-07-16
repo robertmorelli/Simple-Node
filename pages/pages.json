@@ -76,5 +76,24 @@
     "ionicon:sync-circle":["./ionicons/sync-circle.svg","image/svg"],
     "ionicon:arrow-undo":["./ionicons/arrow-undo.svg","image/svg"],
     "ionicon:save":["./ionicons/save.svg","image/svg"],
-    "ionicon:shapes":["./ionicons/shapes.svg","image/svg"]
+    "ionicon:shapes":["./ionicons/shapes.svg","image/svg"],
+
+
+
+    "icon:x":["./icons/x.svg","image/svg+xml"],
+    "icon:wand2":["./icons/wand2.svg","image/svg+xml"],
+    "icon:wand":["./icons/wand.svg","image/svg+xml"],
+    "icon:snake":["./icons/snake.svg","image/svg+xml"],
+    "icon:size":["./icons/size.svg","image/svg+xml"],
+    "icon:save":["./icons/save.svg","image/svg+xml"],
+    "icon:morph":["./icons/morph.svg","image/svg+xml"],
+    "icon:morph2":["./icons/morph2.svg","image/svg+xml"],
+    "icon:insect":["./icons/insect.svg","image/svg+xml"],
+    "icon:color":["./icons/color.svg","image/svg+xml"],
+    "icon:brush":["./icons/brush.svg","image/svg+xml"],
+    "icon:back":["./icons/back.svg","image/svg+xml"],
+    "icon:arm":["./icons/arm.svg","image/svg+xml"],
+    "icon:test":["./icons/test.svg","image/svg+xml"],
+    "icon:arch":["./icons/arch.svg","image/svg+xml"],
+    "icon:snakeTutorial":["./icons/snakeTutorial.svg","image/svg+xml"]
   }
