@@ -1,16 +1,118 @@
-.activebutton{
+.activebutton {
+    color: "danger"
+}
 
-    color:"danger"
+html {
+    touch-action: none;
+    user-select: none;
 }
 
 ion-icon {
     --ionicon-stroke-width: 32px;
-  }
+}
 
+.tooltip {
+    display: none;
+}
 
+.toolbox:hover~.tooltip {
+    display: block;
+}
 
-  .tooltip {display: none;}
-  .toolbox:hover ~ .tooltip {display: block;}
+img {
+    display: inline-box;
+}
 
+input[type=number] {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 30%;
+    border-style: none;
+    color: #eee;
+}
 
-  img { display: inline-box; }
+input[type=number]:focus {
+    outline: none;
+}
+
+input[type=text] {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 70%;
+    border-style: none;
+    color: #eee;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+input[type=range] {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#redSlider[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    box-shadow: 0px 0px 0px #000000;
+    background: #f44;
+    border-radius: 1px;
+    border: 0px solid #000000;
+    height: 3px;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+#redSlider[type=range]::-webkit-slider-thumb {
+    margin-top: -6px;
+}
+
+#greenSlider[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    box-shadow: 0px 0px 0px #000000;
+    background: #4f4;
+    border-radius: 1px;
+    border: 0px solid #000000;
+    height: 3px;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+#greenSlider[type=range]::-webkit-slider-thumb {
+    margin-top: -6px;
+}
+
+#blueSlider[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    box-shadow: 0px 0px 0px #000000;
+    background: #44f;
+    border-radius: 1px;
+    border: 0px solid #000000;
+    height: 3px;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+#blueSlider[type=range]::-webkit-slider-thumb {
+    margin-top: -6px;
+}
+
+#thicknessSlider[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    box-shadow: 0px 0px 0px #000000;
+    background: #666;
+    border-radius: 1px;
+    border: 0px solid #000000;
+    height: 3px;
+    padding-left: -2px;
+    padding-right: -2px;
+}
+
+#thicknessSlider[type=range]::-webkit-slider-thumb {
+    margin-top: -6px;
+}

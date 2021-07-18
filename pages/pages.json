@@ -37,6 +37,7 @@
 
     "flora":["./pages/flora/flora.html","text/html"],
     "florajs":["./pages/flora/flora.js","text/javascript"],
+    "floratoolsjs":["./pages/flora/floratools.js","text/javascript"],
     "floracss":["./pages/flora/flora.css","text/css"],
 
     "mosaic":["./pages/mosaic/mosaic.html","text/html"],
@@ -95,5 +96,7 @@
     "icon:arm":["./icons/arm.svg","image/svg+xml"],
     "icon:test":["./icons/test.svg","image/svg+xml"],
     "icon:arch":["./icons/arch.svg","image/svg+xml"],
+    "icon:manualsize":["./icons/manualsize.svg","image/svg+xml"],
+    "icon:autosize":["./icons/autosize.svg","image/svg+xml"],
     "icon:snakeTutorial":["./icons/snakeTutorial.svg","image/svg+xml"]
   }
