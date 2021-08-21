@@ -16,18 +16,20 @@ pausedVersion={}
 
 idCounter = 0
 
-function load(){
+function load() {
 
-    Tools={
-        "Draw":DrawTool,
-        "AnimateMove":AnimateMoveTool,
-        "AnimateArch":AnimateArchTool,
-        "AnimateInsect":AnimateInsectTool,
-        "AnimateSnake":AnimateSnakeTool,
-        "AnimateTail":AnimateTailTool,
-        "Select":SelectTool,
-        "Blobframe":BlobframeTool
+    Tools = {
+        "Draw": DrawTool,
+        "AnimateMove": AnimateMoveTool,
+        "AnimateArch": AnimateArchTool,
+        "AnimateInsect": AnimateInsectTool,
+        "AnimateSnake": AnimateSnakeTool,
+        "AnimateTail": AnimateTailTool,
+        "Select": SelectTool,
+        "Blobframe": BlobframeTool
     }
+
+
     slowItems = []
     HOTsvg = document.getElementById("HOTTsvg")
     COLDsvg = document.getElementById("COLDsvg")
@@ -36,113 +38,134 @@ function load(){
     mouseConstructor()
     buttonSetWidthAutomatic()
     toolConstructor()
-    
 }
 
-function toolConstructor(){
-    for(var tool in Tools){
+function toolConstructor() {
+    for (var tool in Tools) {
         toolElement = document.getElementById(tool)
-        toolElement.addEventListener('click',changeToolTo)
+        toolElement.addEventListener('click', changeToolTo)
     }
+    document.getElementById("Draw").setAttribute("style", "filter: invert()")
+
 }
 
-function changeToolTo(E){
+function changeToolTo(E) {
     CurrentTool = Tools[this.id]
-    for(var tool in Tools){
-        if(tool != this.id){
+    for (var tool in Tools) {
+        if (tool != this.id) {
             //document.getElementById(tool).setAttribute("color","secondary")
-            document.getElementById(tool).setAttribute("style",``)
-        }
-        else{
+            document.getElementById(tool).setAttribute("style", ``)
+        } else {
             //document.getElementById(tool).setAttribute("color","tertiary")
-            document.getElementById(tool).setAttribute("style",`filter: invert()`)
+            document.getElementById(tool).setAttribute("style", `filter: invert()`)
         }
     }
 }
 
-function mouseConstructor(){
+function changeToolToName(name) {
+    CurrentTool = Tools[name]
+    for (var tool in Tools) {
+        if (tool != name) {
+            //document.getElementById(tool).setAttribute("color","secondary")
+            document.getElementById(tool).setAttribute("style", ``)
+        } else {
+            //document.getElementById(tool).setAttribute("color","tertiary")
+            document.getElementById(tool).setAttribute("style", `filter: invert()`)
+        }
+    }
+}
+
+
+function mouseConstructor() {
     clickTimeStamp = 0
     CurrentTool = DrawTool
     mouseIsDown = false
-    DIVsvg.addEventListener( 'click' , clickHandle )
-    DIVsvg.addEventListener( 'mousedown' , mouseDownHandle )
-    DIVsvg.addEventListener( 'touchstart' , touchDownHandle )
-    document.addEventListener( 'mouseup' , mouseUpHandle )
-    document.addEventListener( 'touchend' , touchUpHandle )
+    DIVsvg.addEventListener('click', clickHandle)
+    DIVsvg.addEventListener('mousedown', mouseDownHandle)
+    DIVsvg.addEventListener('touchstart', touchDownHandle)
+    document.addEventListener('mouseup', mouseUpHandle)
+    document.addEventListener('touchend', touchUpHandle)
 }
 
-function clickHandle( E ){
-    if( ( E.timeStamp - clickTimeStamp ) < 100 ){
-        CurrentTool.Click( E )
+function clickHandle(E) {
+    if ((E.timeStamp - clickTimeStamp) < 100) {
+        CurrentTool.Click(E)
     }
 }
 
-function mouseDownHandle(E){
-    document.addEventListener( 'mousemove' , CurrentTool.Move )
-    clickTimeStamp=E.timeStamp
-    DIVbox=DIVsvg.getBoundingClientRect()
+function mouseDownHandle(E) {
+    document.addEventListener('mousemove', CurrentTool.Move)
+    clickTimeStamp = E.timeStamp
+    DIVbox = DIVsvg.getBoundingClientRect()
 }
 
-function touchDownHandle(E){
-    document.addEventListener( 'touchmove' , touchMoveHandle )
-    clickTimeStamp=E.timeStamp
-    DIVbox=DIVsvg.getBoundingClientRect()
+function touchDownHandle(E) {
+    document.addEventListener('touchmove', touchMoveHandle)
+    clickTimeStamp = E.timeStamp
+    DIVbox = DIVsvg.getBoundingClientRect()
 }
 
-function mouseUpHandle(E){
-    document.removeEventListener('mousemove',CurrentTool.Move)
-    if((E.timeStamp-clickTimeStamp)>=100){
+function mouseUpHandle(E) {
+    document.removeEventListener('mousemove', CurrentTool.Move)
+    if ((E.timeStamp - clickTimeStamp) >= 100) {
         CurrentTool.End(E)
     }
     fastDraw("")
 }
 
-function touchUpHandle(E){
-    document.removeEventListener('touchmove',CurrentTool.Move)
-    if((E.timeStamp-clickTimeStamp)>=100){
+function touchUpHandle(E) {
+    document.removeEventListener('touchmove', CurrentTool.Move)
+    if ((E.timeStamp - clickTimeStamp) >= 100) {
         CurrentTool.End(E)
     }
     fastDraw("")
 }
 
-function touchMoveHandle(E){
+function touchMoveHandle(E) {
     E.clientX = E.touches[0].clientX
     E.clientY = E.touches[0].clientY
     CurrentTool.Move(E)
 }
 
-function sliderConstructor(){
+function sliderConstructor() {
     redValue = 0
     greenValue = 0
     blueValue = 0
     thickValue = 9
-    //red
+        //red
     redSlider = document.getElementById("redSlider")
-    redSlider.addEventListener("change",setStrokeStyle)
-    //green
+    redSlider.addEventListener("change", setStrokeStyle)
+        //green
     greenSlider = document.getElementById("greenSlider")
-    greenSlider.addEventListener("change",setStrokeStyle)
-    //blue
+    greenSlider.addEventListener("change", setStrokeStyle)
+        //blue
     blueSlider = document.getElementById("blueSlider")
-    blueSlider.addEventListener("change",setStrokeStyle)
-    //thickness
+    blueSlider.addEventListener("change", setStrokeStyle)
+        //thickness
     thicknessSlider = document.getElementById("thicknessSlider")
-    thicknessSlider.addEventListener("change",setStrokeStyle)
+    thicknessSlider.addEventListener("change", setStrokeStyle)
 
     thicknessSlider.value = 3
+
+    previewLine = document.getElementById("preview");
+    setStrokeStyle()
 }
 
-function setStrokeStyle(){
+function setStrokeStyle() {
     redValue = redSlider.value
     greenValue = greenSlider.value
     blueValue = blueSlider.value
-    thickValue = thicknessSlider.value**2
+    thickValue = thicknessSlider.value ** 2
+    previewLine.setAttribute("stroke-width", "" + thickValue)
+    previewLine.setAttribute("stroke", `rgb(${redValue},${greenValue},${blueValue})`)
+
+
 }
 
-function buttonSetWidthControlled(){
+function buttonSetWidthControlled() {
     maybeW = Number(document.getElementById("width").value)
     canvasH = Number(document.getElementById("height").value)
-    canvasW = (maybeW > 350)?maybeW:350
+    canvasW = (maybeW > 350) ? maybeW : 350
     Array(HOTsvg, COLDsvg, DIVsvg).forEach(svg => {
         svg.setAttribute("width", canvasW.toString())
         svg.setAttribute("height", canvasH.toString())
@@ -151,10 +174,10 @@ function buttonSetWidthControlled(){
     document.getElementById("height").setAttribute("value", canvasH.toString())
 }
 
-function buttonSetWidthAutomatic(){
+function buttonSetWidthAutomatic() {
     canvasH = window.innerHeight - 100;
     maybeW = window.innerWidth - 225;
-    canvasW = (maybeW > 350)?maybeW:350
+    canvasW = (maybeW > 350) ? maybeW : 350
     Array(HOTsvg, COLDsvg, DIVsvg).forEach(svg => {
         svg.setAttribute("width", canvasW.toString())
         svg.setAttribute("height", canvasH.toString())
@@ -163,29 +186,29 @@ function buttonSetWidthAutomatic(){
     document.getElementById("height").setAttribute("value", canvasH.toString())
 }
 
-function x(E){
+function x(E) {
     return Math.round(E.clientX - DIVbox.left)
 }
 
-function y(E){
+function y(E) {
     return Math.round(E.clientY - DIVbox.top)
 }
 
-function fastDraw(toDraw){
+function fastDraw(toDraw) {
     HOTsvg.innerHTML = toDraw
 }
 
-function slowDraw(){
+function slowDraw() {
     var HTMLString = ""
-    for(var elemNum = 0; elemNum < slowItems.length; elemNum++){
+    for (var elemNum = 0; elemNum < slowItems.length; elemNum++) {
         elem = slowItems[elemNum]
-        //console.log(stringifySlow(elem))
+            //console.log(stringifySlow(elem))
         HTMLString += stringifySlow(elem)
     }
-    COLDsvg.innerHTML=HTMLString
+    COLDsvg.innerHTML = HTMLString
 }
 
-function stringifySlow(elem){
+function stringifySlow(elem) {
     return `<${elem.opening
     } id="${elem.id
     }" ${elem.stylestring
