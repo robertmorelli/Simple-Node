@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#A7A9AC;}
+	.st1{fill:none;stroke:#6D6E71;stroke-width:2;stroke-miterlimit:10;}
+	.st2{fill:#6D6E71;}
+	.st3{fill:#58595B;}
+</style>
+<path class="st0" d="M50,5.55c-24.59,0-44.52,19.93-44.52,44.52c0,24.59,19.93,44.52,44.52,44.52s44.52-19.93,44.52-44.52
+	C94.52,25.48,74.59,5.55,50,5.55z"/>
+<g>
+	<g>
+		<line class="st1" x1="22.88" y1="21.37" x2="22.88" y2="77.79"/>
+		<g>
+			<polygon class="st2" points="19.49,25.35 22.88,21.96 26.27,25.35 26.27,22.47 22.88,19.08 19.49,22.47 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st1" x1="78.8" y1="77.3" x2="22.38" y2="77.3"/>
+		<g>
+			<polygon class="st2" points="74.82,73.91 78.21,77.3 74.82,80.69 77.7,80.69 81.09,77.3 77.7,73.91 			"/>
+		</g>
+	</g>
+</g>
+<path class="st3" d="M49.39,55H35.06C33.37,55,32,53.63,32,51.94v-8.89c0-1.69,1.37-3.06,3.06-3.06h14.33
+	c1.69,0,3.06,1.37,3.06,3.06v8.89C52.44,53.63,51.08,55,49.39,55z"/>
+<path class="st3" d="M74.39,55H60.06C58.37,55,57,53.63,57,51.94v-8.89c0-1.69,1.37-3.06,3.06-3.06h14.33
+	c1.69,0,3.06,1.37,3.06,3.06v8.89C77.44,53.63,76.08,55,74.39,55z"/>
+</svg>

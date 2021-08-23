@@ -114,7 +114,9 @@ function assignQuestions(){
             return
         }
         else{
-            for(const [key,value] of Object.entries(problems[entry[0]])){
+            var CatProblems = Object.entries(problems[entry[0]])
+            for(var i=0;i<entry[1];i++){
+                [key,value] = CatProblems[i]
                 ShuffleQuestions.push([entry[0],key,value])
             }
         }
@@ -145,12 +147,11 @@ function paramError(num){
     }
 }
 
-function makeProblem(num,[Category, id, Description]){
+function makeProblem(num,[Category, Description, id]){
     return `
-        <div class="thingy">${num}
+        <div class="thingy">${num+1}
             <a class="thingy" style="background-color: #226; ">${Category}</a>
-            <a class="thingy" style="background-color: #226; ">${id}</a>
-            <a class="thingy" style="background-color: #226; ">${Description}</a>
+            <a class="thingy" style="background-color: #449; ">${Description}</a>
             <button class="thingy" onclick="shuffle(${id})">swap</button>
         </div>`   
 }
