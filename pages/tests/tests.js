@@ -138,11 +138,11 @@ function paramError(num){
         return
     }
     if(num==1){
-        document.getElementById("assignError").textContent="only the shadow knows what darkness lies in the hearts of men"
+        document.getElementById("assignError").textContent="parameters not filled"//"only the shadow knows what darkness lies in the hearts of men"
         return
     }
     if(num==2){
-        document.getElementById("assignError").textContent="it sees"
+        document.getElementById("assignError").textContent="invalid parameter: too many questions"
         return
     }
 }
@@ -162,4 +162,12 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+}
+
+
+
+
+function importData(self){
+    console.log(self.files)
+    
 }
